@@ -5,15 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="script.js"></script>
+    <script src="ex2.js"></script>
 </head>
 <body>
+    <h3>Baggage Checker</h3>
     <input type="text" id="weight" placeholder="Enter baggage weight (kg)">
     <button onclick="check()">Check Baggage</button>
     <p>
         <input type="text" id="removed" style='display:none;' placeholder="Enter weight to remove (kg)">
         <button id='remB' onclick="remove()" style='display:none;'>Remove this much baggage (kg)</button>
-
     </p>
+
+    <hr>
+
+    <h3>A :</h3>
+    <input type="number" id="a" placeholder="Enter A">
+    <h3>B : :</h3>
+    <input type="number" id="b" placeholder="Enter B">
+    <h3>Multiples of 3 or 5 Sum Calculator</h3>
+    <input type="number" id="sum" placeholder="Enter limit (e.g. 1000)">
+    <button onclick="findSum()">Find Sum</button>
+    <p id="result"></p>
 
 </body>
 </html>
