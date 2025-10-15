@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow DOM Example</title>
+</head>
+
+<body>
+    <div id="shadow1"></div>
+    <div id="shadow2"></div>
+
+    <script>
+        const div1 = document.querySelector("#shadow1");
+        const shadow1 = div1.attachShadow({ mode: "open" });
+        const box1 = document.createElement("div");
+        box1.innerHTML = "<p>This is Shadow DOM 1</p>";
+        const style1 = document.createElement("style");
+        style1.textContent = `
+      div {
+        height: 200px;
+        width: 200px;
+        border: 2px solid black;
+      }
+      p {
+        color: red;
+        text-align: center;
+      }
+    `;
+        shadow1.append(style1, box1);
+
+        const div2 = document.querySelector("#shadow2");
+        const shadow2 = div2.attachShadow({ mode: "open" });
+        const box2 = document.createElement("div");
+        box2.innerHTML = "<p> Do you want box 2 ? i won't give you</p>";
+        const style2 = document.createElement("style");
+        style2.textContent = `
+      div {
+        height: 200px;
+        width: 200px;
+        border: 2px solid black;
+        margin-top: 10px;
+      }
+      p {
+        color: blue;
+        text-align: center;
+      }
+    `;
+        shadow2.append(style2, box2);
+    </script>
+</body>
+
+</html>

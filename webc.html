@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadow DOM Example</title>
+</head>
+<body>
+  <!-- Custom element -->
+  <user-card></user-card>
+
+  <script>
+    // Define a custom element class
+    class UserCard extends HTMLElement {
+      constructor() {
+        super();
+
+        // Attach shadow root (open means you can access it via JS)
+        const shadow = this.attachShadow({ mode: 'open' });
+
+        // Create elements inside shadow DOM
+        const container = document.createElement('div');
+        container.setAttribute('class', 'card');
+
+        const name = document.createElement('h2');
+        name.textContent = 'John Doe';
+
+        const info = document.createElement('p');
+        info.textContent = 'Frontend Developer';
+
+        // Create and add styles (only affect shadow DOM)
+        const style = document.createElement('style');
+        style.textContent = `
+          .card {
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            background: #f9f9f9;
+          }
+          h2 {
+            color: blue;
+            font-size: 1.2em;
+          }
+        `;
+
+        // Append all to shadow root
+        shadow.appendChild(style);
+        shadow.appendChild(container);
+        container.appendChild(name);
+        container.appendChild(info);
+      }
+    }
+
+    // Register the element
+    customElements.define('user-card', UserCard);
+  </script>
+</body>
+</html>
